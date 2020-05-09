@@ -13,7 +13,7 @@ class Mention {
       const { url, value } = contentState.getEntity(entityKey).getData();
       return (
         <a
-          href={url || value}
+          href={"../user/" + value}
           className={classNames("rdw-mention-link", className)}
         >
           {children}

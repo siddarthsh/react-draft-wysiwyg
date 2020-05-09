@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { EditorState } from 'draft-js';
 import classNames from 'classnames';
 import Option from '../../components/Option';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './styles.css';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const getImageComponent = config => class Image extends Component {
   static propTypes: Object = {
@@ -100,14 +102,12 @@ const getImageComponent = config => class Image extends Component {
         )}
       >
         <span className="rdw-image-imagewrapper">
-          <img
-            src={src}
+          <LazyLoadImage
             alt={alt}
-            style={{
-              height,
-              width,
-            }}
-          />
+            effect="blur"
+            src={src}
+            width={width}
+            height={height} />
           {
             !isReadOnly() && hovered && isImageAlignmentEnabled() ?
               this.renderAlignmentOptions(alignment)
